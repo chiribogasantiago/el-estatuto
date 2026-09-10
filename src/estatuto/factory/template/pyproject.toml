@@ -1,0 +1,68 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "__SLUG__-framework"
+version = "0.1.0"
+description = "__NAME__: a governed employee framework built under El Estatuto"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "pydantic>=2.11,<3",
+  "jsonschema>=4.25,<5",
+]
+
+[project.scripts]
+__SLUG__ = "__PACKAGE__.cli:main"
+
+[dependency-groups]
+dev = [
+  "mkdocs>=1.6,<2",
+  "mkdocs-material>=9.5,<10",
+  "mkdocstrings[python]>=0.27,<1",
+  "mypy>=1.17,<3",
+  "pip-audit>=2.10.1,<3",
+  "pytest>=8.4,<10",
+  "pytest-cov>=6.2,<8",
+  "ruff>=0.12,<1",
+  "types-jsonschema>=4.25,<5",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/__PACKAGE__"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"contracts/peg" = "__PACKAGE__/peg_schemas"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "D"]
+ignore = ["D100", "D104", "D105", "D107", "D203", "D212", "E501"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src/__PACKAGE__", "tests", "conformance.py"]
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["__PACKAGE__"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true

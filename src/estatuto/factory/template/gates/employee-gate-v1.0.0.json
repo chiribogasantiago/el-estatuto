@@ -1,0 +1,44 @@
+{
+  "schema": "__SLUG__.employee-gate/1.0.0",
+  "purpose": "One control per promise the employee makes. Promotion requires every control; there is no averaging.",
+  "required_score": 5,
+  "cases": [
+    {
+      "gate_id": "G0-contracts",
+      "requirement": "Published contracts are current, identified and honest.",
+      "test_nodeids": [
+        "tests/test_contracts.py"
+      ]
+    },
+    {
+      "gate_id": "G1-method",
+      "requirement": "Valid assignments become proposals; invalid ones are rejected without work.",
+      "test_nodeids": [
+        "tests/test_employee.py"
+      ]
+    },
+    {
+      "gate_id": "G2-protocol",
+      "requirement": "The PEG/1 wire attests assignments, refuses defects with typed documents, and HTTP equals in-process.",
+      "test_nodeids": [
+        "tests/test_peg_wire.py",
+        "tests/test_transports.py"
+      ]
+    },
+    {
+      "gate_id": "G3-hygiene",
+      "requirement": "English live surface, no machine paths, vendored protocol schemas, honest command-line exit codes.",
+      "test_nodeids": [
+        "tests/test_repository_hygiene.py",
+        "tests/test_cli.py"
+      ]
+    },
+    {
+      "gate_id": "G4-release",
+      "requirement": "One version everywhere; gate corpora name real tests.",
+      "test_nodeids": [
+        "tests/test_release_discipline.py"
+      ]
+    }
+  ]
+}

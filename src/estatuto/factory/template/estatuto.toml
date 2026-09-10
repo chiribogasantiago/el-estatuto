@@ -1,0 +1,24 @@
+# What this repository declares to El Estatuto. The gate reads it; everything else it observes.
+[framework]
+name = "__NAME__"
+slug = "__SLUG__"
+role = "employee"
+package = "__PACKAGE__"
+standard = "__STANDARD_VERSION__"
+
+[language]
+# Archived paths keep their original language; everything else is the live, English surface.
+archive = ["docs/governance/baseline/**", "docs/plans/**", "docs/evidence/**", "docs/history/**"]
+proper_nouns = ["La Generala", "El Corresponsal", "La Bibliotecaria", "El Estatuto", "__NAME__"]
+
+[changelog]
+# A change under these paths must record itself under "## Unreleased" in CHANGELOG.md.
+normative_prefixes = ["src/", "contracts/", "gates/", "scripts/"]
+normative_files = ["manifest.json", "pyproject.toml", "conformance.py", "estatuto.toml"]
+
+# A deviation from one control is recorded here, backed by a decision, with a sunset date.
+# [[exception]]
+# control = "E-3.1"
+# decision = "docs/decisions/0002-example.md"
+# sunset = 2027-01-31
+# reason = "Why the deviation is needed and what closes it."

@@ -1,0 +1,33 @@
+{
+  "schema": "estatuto.registry/1.0.0",
+  "purpose": "The frameworks of the house. Descriptive: a framework's conformance is what its own CI measures with `estatuto gate`, not what this file says.",
+  "frameworks": [
+    {
+      "name": "La Generala",
+      "slug": "generala",
+      "role": "governor",
+      "package": "generala",
+      "repository": "https://github.com/chiribogasantiago/generala-framework",
+      "employee_id": null,
+      "charter": "A governance runtime for AI-assisted work: it turns an assignment into a graph of obligations, executes it durably with the employees a tenant has authorised, and refuses to declare work finished until independent assurance, provenance and the exact context used are on record."
+    },
+    {
+      "name": "El Corresponsal",
+      "slug": "corresponsal",
+      "role": "employee",
+      "package": "corresponsal",
+      "repository": "https://github.com/chiribogasantiago/el-corresponsal",
+      "employee_id": "emp_corresponsal01",
+      "charter": "Governed web research and browser operation: typed assignments, explicit authority and budget, evidence-first results with literal citations; it never accepts its own work."
+    },
+    {
+      "name": "La Bibliotecaria",
+      "slug": "bibliotecaria",
+      "role": "employee",
+      "package": "bibliotecaria",
+      "repository": "https://github.com/chiribogasantiago/la-bibliotecaria",
+      "employee_id": "emp_bibliotecaria01",
+      "charter": "Autonomous, continuous contextual memory: it preserves originals, extracts structure and meaning, catalogues, relates and historicises information, and delivers citable, authorised context to agents; it never delivers a final answer."
+    }
+  ]
+}

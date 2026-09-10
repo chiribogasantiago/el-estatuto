@@ -1,0 +1,76 @@
+{
+  "$id": "peg.workload-binding/1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "``peg.workload-binding/1.0.0``: authenticates a workload; conveys no tenant membership.",
+  "properties": {
+    "binding_id": {
+      "minLength": 1,
+      "title": "Binding Id",
+      "type": "string"
+    },
+    "consumer_id": {
+      "minLength": 1,
+      "title": "Consumer Id",
+      "type": "string"
+    },
+    "conveys_tenant": {
+      "const": false,
+      "title": "Conveys Tenant",
+      "type": "boolean"
+    },
+    "employee_id": {
+      "pattern": "^emp_[a-z0-9][a-z0-9_-]{7,63}$",
+      "title": "Employee Id",
+      "type": "string"
+    },
+    "employee_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Employee Version",
+      "type": "string"
+    },
+    "principal_subject": {
+      "minLength": 1,
+      "title": "Principal Subject",
+      "type": "string"
+    },
+    "schema": {
+      "const": "peg.workload-binding/1.0.0",
+      "title": "Schema",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "active",
+        "suspended",
+        "revoked"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "trust_domain": {
+      "minLength": 1,
+      "title": "Trust Domain",
+      "type": "string"
+    },
+    "valid_until": {
+      "format": "date-time",
+      "title": "Valid Until",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "binding_id",
+    "employee_id",
+    "employee_version",
+    "principal_subject",
+    "consumer_id",
+    "trust_domain",
+    "status",
+    "valid_until",
+    "conveys_tenant"
+  ],
+  "title": "WorkloadBinding",
+  "type": "object"
+}

@@ -1,0 +1,41 @@
+{
+  "$id": "peg.negotiation-decision/1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "``peg.negotiation-decision/1.0.0``: accept or reject with stable reasons, before work.",
+  "properties": {
+    "decided_at": {
+      "format": "date-time",
+      "title": "Decided At",
+      "type": "string"
+    },
+    "disposition": {
+      "enum": [
+        "accept",
+        "reject"
+      ],
+      "title": "Disposition",
+      "type": "string"
+    },
+    "reasons": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Reasons",
+      "type": "array"
+    },
+    "schema": {
+      "const": "peg.negotiation-decision/1.0.0",
+      "title": "Schema",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "disposition",
+    "reasons",
+    "decided_at"
+  ],
+  "title": "NegotiationDecision",
+  "type": "object"
+}

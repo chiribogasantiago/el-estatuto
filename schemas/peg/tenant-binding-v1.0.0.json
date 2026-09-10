@@ -1,0 +1,70 @@
+{
+  "$id": "peg.tenant-binding/1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "``peg.tenant-binding/1.0.0``: the governed correspondence between two tenant namespaces.\n\nTextual equality of identifiers is never accepted as proof; the binding is.",
+  "properties": {
+    "binding_id": {
+      "minLength": 1,
+      "title": "Binding Id",
+      "type": "string"
+    },
+    "governor_tenant_id": {
+      "minLength": 1,
+      "title": "Governor Tenant Id",
+      "type": "string"
+    },
+    "provider_namespace": {
+      "minLength": 1,
+      "title": "Provider Namespace",
+      "type": "string"
+    },
+    "provider_tenant_id": {
+      "minLength": 1,
+      "title": "Provider Tenant Id",
+      "type": "string"
+    },
+    "schema": {
+      "const": "peg.tenant-binding/1.0.0",
+      "title": "Schema",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "active",
+        "suspended",
+        "revoked"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "valid_from": {
+      "format": "date-time",
+      "title": "Valid From",
+      "type": "string"
+    },
+    "valid_until": {
+      "format": "date-time",
+      "title": "Valid Until",
+      "type": "string"
+    },
+    "version": {
+      "minimum": 1,
+      "title": "Version",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema",
+    "binding_id",
+    "governor_tenant_id",
+    "provider_tenant_id",
+    "provider_namespace",
+    "version",
+    "status",
+    "valid_from",
+    "valid_until"
+  ],
+  "title": "TenantBinding",
+  "type": "object"
+}

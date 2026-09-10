@@ -1,0 +1,116 @@
+{
+  "$defs": {
+    "HealthCapacityObservation": {
+      "additionalProperties": false,
+      "description": "``peg.health-capacity-observation/1.0.0``: a dated, expiring signal; never a selection.",
+      "properties": {
+        "available_units": {
+          "minimum": 0,
+          "title": "Available Units",
+          "type": "integer"
+        },
+        "capability_id": {
+          "pattern": "^cap_[a-z0-9][a-z0-9_-]{7,63}$",
+          "title": "Capability Id",
+          "type": "string"
+        },
+        "employee_id": {
+          "pattern": "^emp_[a-z0-9][a-z0-9_-]{7,63}$",
+          "title": "Employee Id",
+          "type": "string"
+        },
+        "employee_version": {
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "title": "Employee Version",
+          "type": "string"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        },
+        "provenance": {
+          "minLength": 1,
+          "title": "Provenance",
+          "type": "string"
+        },
+        "schema": {
+          "const": "peg.health-capacity-observation/1.0.0",
+          "title": "Schema",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "healthy",
+            "degraded",
+            "unavailable",
+            "unknown"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "valid_until": {
+          "format": "date-time",
+          "title": "Valid Until",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema",
+        "employee_id",
+        "employee_version",
+        "capability_id",
+        "state",
+        "available_units",
+        "observed_at",
+        "valid_until",
+        "provenance"
+      ],
+      "title": "HealthCapacityObservation",
+      "type": "object"
+    }
+  },
+  "$id": "peg.health-report/1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "``peg.health-report/1.0.0``: the answer of ``GET /peg/v1/health``, one row per capability.",
+  "properties": {
+    "employee_id": {
+      "pattern": "^emp_[a-z0-9][a-z0-9_-]{7,63}$",
+      "title": "Employee Id",
+      "type": "string"
+    },
+    "employee_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Employee Version",
+      "type": "string"
+    },
+    "observations": {
+      "items": {
+        "$ref": "#/$defs/HealthCapacityObservation"
+      },
+      "minItems": 1,
+      "title": "Observations",
+      "type": "array"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "title": "Observed At",
+      "type": "string"
+    },
+    "schema": {
+      "const": "peg.health-report/1.0.0",
+      "title": "Schema",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "employee_id",
+    "employee_version",
+    "observed_at",
+    "observations"
+  ],
+  "title": "HealthReport",
+  "type": "object"
+}

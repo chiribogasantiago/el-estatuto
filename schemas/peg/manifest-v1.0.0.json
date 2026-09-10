@@ -1,0 +1,193 @@
+{
+  "$defs": {
+    "Capability": {
+      "additionalProperties": false,
+      "description": "One thing an employee can be assigned, with the exact contracts it speaks.",
+      "properties": {
+        "capability_id": {
+          "pattern": "^cap_[a-z0-9][a-z0-9_-]{7,63}$",
+          "title": "Capability Id",
+          "type": "string"
+        },
+        "cost_unit": {
+          "minLength": 1,
+          "title": "Cost Unit",
+          "type": "string"
+        },
+        "deprecated_input_contracts": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9]*\\.[a-z0-9]+(-[a-z0-9]+)*/[0-9]+\\.[0-9]+\\.[0-9]+$",
+            "type": "string"
+          },
+          "title": "Deprecated Input Contracts",
+          "type": "array"
+        },
+        "evidence_contract": {
+          "pattern": "^[a-z][a-z0-9]*\\.[a-z0-9]+(-[a-z0-9]+)*/[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "title": "Evidence Contract",
+          "type": "string"
+        },
+        "input_contract": {
+          "pattern": "^[a-z][a-z0-9]*\\.[a-z0-9]+(-[a-z0-9]+)*/[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "title": "Input Contract",
+          "type": "string"
+        },
+        "output_contract": {
+          "pattern": "^[a-z][a-z0-9]*\\.[a-z0-9]+(-[a-z0-9]+)*/[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "title": "Output Contract",
+          "type": "string"
+        },
+        "supports_checkpoint": {
+          "title": "Supports Checkpoint",
+          "type": "boolean"
+        },
+        "version": {
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "capability_id",
+        "version",
+        "input_contract",
+        "output_contract",
+        "evidence_contract",
+        "cost_unit",
+        "supports_checkpoint"
+      ],
+      "title": "Capability",
+      "type": "object"
+    },
+    "Pack": {
+      "additionalProperties": false,
+      "description": "A versioned, recommended procedure over declared capabilities. A pack grants nothing.",
+      "properties": {
+        "capabilities": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Capabilities",
+          "type": "array"
+        },
+        "pack_id": {
+          "pattern": "^pack_[a-z0-9][a-z0-9_-]{3,63}$",
+          "title": "Pack Id",
+          "type": "string"
+        },
+        "version": {
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "pack_id",
+        "version",
+        "capabilities"
+      ],
+      "title": "Pack",
+      "type": "object"
+    }
+  },
+  "$id": "peg.manifest/1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "``peg.manifest/1.0.0``: what an employee publishes about itself before any work.",
+  "properties": {
+    "capabilities": {
+      "items": {
+        "$ref": "#/$defs/Capability"
+      },
+      "minItems": 1,
+      "title": "Capabilities",
+      "type": "array"
+    },
+    "employee_id": {
+      "pattern": "^emp_[a-z0-9][a-z0-9_-]{7,63}$",
+      "title": "Employee Id",
+      "type": "string"
+    },
+    "employee_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Employee Version",
+      "type": "string"
+    },
+    "error_codes": {
+      "items": {
+        "pattern": "^[A-Z][A-Z0-9_]{2,63}$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Error Codes",
+      "type": "array"
+    },
+    "integrity_digest": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Integrity Digest",
+      "type": "string"
+    },
+    "modes": {
+      "items": {
+        "enum": [
+          "job",
+          "request",
+          "session",
+          "service/subscription"
+        ],
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Modes",
+      "type": "array"
+    },
+    "packs": {
+      "items": {
+        "$ref": "#/$defs/Pack"
+      },
+      "title": "Packs",
+      "type": "array"
+    },
+    "profiles": {
+      "items": {
+        "enum": [
+          "CORE",
+          "FRAMEWORK",
+          "CONTEXT_PROVIDER"
+        ],
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Profiles",
+      "type": "array"
+    },
+    "protocol_versions": {
+      "items": {
+        "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Protocol Versions",
+      "type": "array"
+    },
+    "schema": {
+      "const": "peg.manifest/1.0.0",
+      "title": "Schema",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "employee_id",
+    "employee_version",
+    "protocol_versions",
+    "profiles",
+    "capabilities",
+    "modes",
+    "error_codes",
+    "integrity_digest"
+  ],
+  "title": "Manifest",
+  "type": "object"
+}

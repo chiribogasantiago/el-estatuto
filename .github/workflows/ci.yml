@@ -1,0 +1,33 @@
+name: quality
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv sync --frozen --all-groups
+      - run: >-
+          uv run estatuto changelog-gate
+          --base "${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before }}"
+      - run: uv run ruff check src tests
+      - run: uv run ruff format --check src tests
+      - run: uv run mypy
+      - run: uv run pytest --cov --cov-branch --cov-report=term-missing --cov-fail-under=80
+      - run: uv run estatuto render --check
+      - run: uv run estatuto gate . --output work/framework-standard-gate.json
+      - run: uv run pip-audit --skip-editable
+      - run: uv build
+      - run: uv run mkdocs build --strict

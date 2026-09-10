@@ -1,0 +1,140 @@
+{
+  "$id": "peg.result/1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "``peg.result/1.0.0``: an employee's proposal, attesting the assignment it answers.\n\nA governor rejects a result that conveys authority or whose identity fields differ from the\nassignment. The domain payload travels in ``handoff_payload`` under the capability's output\ncontract; the protocol never redefines it.",
+  "properties": {
+    "assignment_id": {
+      "minLength": 1,
+      "title": "Assignment Id",
+      "type": "string"
+    },
+    "context_digest": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Context Digest",
+      "type": "string"
+    },
+    "conveys_authority": {
+      "default": false,
+      "title": "Conveys Authority",
+      "type": "boolean"
+    },
+    "employee_id": {
+      "pattern": "^emp_[a-z0-9][a-z0-9_-]{7,63}$",
+      "title": "Employee Id",
+      "type": "string"
+    },
+    "employee_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Employee Version",
+      "type": "string"
+    },
+    "event_types": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Event Types",
+      "type": "array"
+    },
+    "evidence_refs": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Evidence Refs",
+      "type": "array"
+    },
+    "execution_count": {
+      "minimum": 1,
+      "title": "Execution Count",
+      "type": "integer"
+    },
+    "generation": {
+      "minimum": 1,
+      "title": "Generation",
+      "type": "integer"
+    },
+    "handoff_payload": {
+      "additionalProperties": true,
+      "title": "Handoff Payload",
+      "type": "object"
+    },
+    "mission_id": {
+      "minLength": 1,
+      "title": "Mission Id",
+      "type": "string"
+    },
+    "obligation_id": {
+      "minLength": 1,
+      "title": "Obligation Id",
+      "type": "string"
+    },
+    "observed_cost_micros": {
+      "minimum": 0,
+      "title": "Observed Cost Micros",
+      "type": "integer"
+    },
+    "output_digest": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Output Digest",
+      "type": "string"
+    },
+    "output_ref": {
+      "minLength": 1,
+      "title": "Output Ref",
+      "type": "string"
+    },
+    "provenance_refs": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Provenance Refs",
+      "type": "array"
+    },
+    "satisfied_deliverables": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Satisfied Deliverables",
+      "type": "array"
+    },
+    "schema": {
+      "const": "peg.result/1.0.0",
+      "title": "Schema",
+      "type": "string"
+    },
+    "tenant_id": {
+      "minLength": 1,
+      "title": "Tenant Id",
+      "type": "string"
+    },
+    "unsettled_cost_micros": {
+      "minimum": 0,
+      "title": "Unsettled Cost Micros",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema",
+    "tenant_id",
+    "mission_id",
+    "obligation_id",
+    "assignment_id",
+    "employee_id",
+    "employee_version",
+    "generation",
+    "context_digest",
+    "output_ref",
+    "output_digest",
+    "evidence_refs",
+    "event_types",
+    "provenance_refs",
+    "satisfied_deliverables",
+    "observed_cost_micros",
+    "unsettled_cost_micros",
+    "execution_count",
+    "handoff_payload"
+  ],
+  "title": "Result",
+  "type": "object"
+}

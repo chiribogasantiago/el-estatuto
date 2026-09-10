@@ -1,0 +1,17 @@
+# El Estatuto declares itself to its own gate. Role "standard" is reserved to this repository.
+[framework]
+name = "El Estatuto"
+slug = "estatuto"
+role = "standard"
+package = "estatuto"
+standard = "1.0.0"
+
+[language]
+# The Spanish edition (ESTATUTO.md and docs/es/) is the owner's edition; it is archived from the
+# English check and kept in parity by clause identifiers, which the gate verifies (E-9.1).
+archive = ["ESTATUTO.md", "docs/es/**", "docs/governance/baseline/**"]
+proper_nouns = ["La Generala", "El Corresponsal", "La Bibliotecaria", "El Estatuto", "El Secretario", "El Directorio", "Núcleo Rector", "El Archivero", "La Cronista"]
+
+[changelog]
+normative_prefixes = ["src/", "schemas/", "gates/", "registry/", "docs/standard/", "docs/protocol/"]
+normative_files = ["pyproject.toml", "estatuto.toml", "ESTATUTO.md"]

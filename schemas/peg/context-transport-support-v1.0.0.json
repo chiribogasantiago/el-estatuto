@@ -1,0 +1,77 @@
+{
+  "$id": "peg.context-transport-support/1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "``peg.context-transport-support/1.0.0``: additive, exact support for composed context.\n\nPublished separately from the manifest so a historical manifest never acquires support by\ninference, and a ``CONTEXT_PROVIDER`` never equals a consumer of assignment context.",
+  "properties": {
+    "capability_id": {
+      "pattern": "^cap_[a-z0-9][a-z0-9_-]{7,63}$",
+      "title": "Capability Id",
+      "type": "string"
+    },
+    "capability_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Capability Version",
+      "type": "string"
+    },
+    "capsule_contract": {
+      "pattern": "^[a-z][a-z0-9]*\\.[a-z0-9]+(-[a-z0-9]+)*/[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Capsule Contract",
+      "type": "string"
+    },
+    "employee_id": {
+      "pattern": "^emp_[a-z0-9][a-z0-9_-]{7,63}$",
+      "title": "Employee Id",
+      "type": "string"
+    },
+    "employee_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Employee Version",
+      "type": "string"
+    },
+    "integrity_digest": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Integrity Digest",
+      "type": "string"
+    },
+    "protocol_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Protocol Version",
+      "type": "string"
+    },
+    "receipt_contract": {
+      "pattern": "^[a-z][a-z0-9]*\\.[a-z0-9]+(-[a-z0-9]+)*/[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Receipt Contract",
+      "type": "string"
+    },
+    "result_attestation_contract": {
+      "pattern": "^[a-z][a-z0-9]*\\.[a-z0-9]+(-[a-z0-9]+)*/[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Result Attestation Contract",
+      "type": "string"
+    },
+    "schema": {
+      "const": "peg.context-transport-support/1.0.0",
+      "title": "Schema",
+      "type": "string"
+    },
+    "supports_progressive_disclosure": {
+      "title": "Supports Progressive Disclosure",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema",
+    "employee_id",
+    "employee_version",
+    "capability_id",
+    "capability_version",
+    "protocol_version",
+    "capsule_contract",
+    "receipt_contract",
+    "result_attestation_contract",
+    "supports_progressive_disclosure",
+    "integrity_digest"
+  ],
+  "title": "ContextTransportSupport",
+  "type": "object"
+}

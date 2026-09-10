@@ -1,0 +1,117 @@
+{
+  "$id": "peg.assignment/1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "``peg.assignment/1.0.0``: the exact context capsule and identity sent to an employee.\n\nIt conveys no authority: the grant stays with the governor, and the employee works only\nwithin ``purpose`` and ``acceptance_criteria`` over the capsule whose digest it attests back.",
+  "properties": {
+    "acceptance_criteria": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Acceptance Criteria",
+      "type": "array"
+    },
+    "assignment_id": {
+      "minLength": 1,
+      "title": "Assignment Id",
+      "type": "string"
+    },
+    "capability_id": {
+      "pattern": "^cap_[a-z0-9][a-z0-9_-]{7,63}$",
+      "title": "Capability Id",
+      "type": "string"
+    },
+    "capability_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Capability Version",
+      "type": "string"
+    },
+    "compatibility_token": {
+      "minLength": 1,
+      "title": "Compatibility Token",
+      "type": "string"
+    },
+    "context": {
+      "additionalProperties": true,
+      "title": "Context",
+      "type": "object"
+    },
+    "context_digest": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Context Digest",
+      "type": "string"
+    },
+    "conveys_authority": {
+      "const": false,
+      "default": false,
+      "title": "Conveys Authority",
+      "type": "boolean"
+    },
+    "employee_id": {
+      "pattern": "^emp_[a-z0-9][a-z0-9_-]{7,63}$",
+      "title": "Employee Id",
+      "type": "string"
+    },
+    "employee_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Employee Version",
+      "type": "string"
+    },
+    "generation": {
+      "minimum": 1,
+      "title": "Generation",
+      "type": "integer"
+    },
+    "mission_id": {
+      "minLength": 1,
+      "title": "Mission Id",
+      "type": "string"
+    },
+    "obligation_id": {
+      "minLength": 1,
+      "title": "Obligation Id",
+      "type": "string"
+    },
+    "purpose": {
+      "minLength": 1,
+      "title": "Purpose",
+      "type": "string"
+    },
+    "run_id": {
+      "minLength": 1,
+      "title": "Run Id",
+      "type": "string"
+    },
+    "schema": {
+      "const": "peg.assignment/1.0.0",
+      "title": "Schema",
+      "type": "string"
+    },
+    "tenant_id": {
+      "minLength": 1,
+      "title": "Tenant Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "tenant_id",
+    "mission_id",
+    "run_id",
+    "obligation_id",
+    "assignment_id",
+    "employee_id",
+    "employee_version",
+    "capability_id",
+    "capability_version",
+    "compatibility_token",
+    "generation",
+    "purpose",
+    "acceptance_criteria",
+    "context_digest",
+    "context"
+  ],
+  "title": "Assignment",
+  "type": "object"
+}

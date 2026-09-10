@@ -1,0 +1,83 @@
+{
+  "$id": "peg.compatibility-demand/1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "``peg.compatibility-demand/1.0.0``: what a governor requires before assigning work.",
+  "properties": {
+    "capability_id": {
+      "pattern": "^cap_[a-z0-9][a-z0-9_-]{7,63}$",
+      "title": "Capability Id",
+      "type": "string"
+    },
+    "capability_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Capability Version",
+      "type": "string"
+    },
+    "checkpoint_required": {
+      "title": "Checkpoint Required",
+      "type": "boolean"
+    },
+    "evidence_contract": {
+      "pattern": "^[a-z][a-z0-9]*\\.[a-z0-9]+(-[a-z0-9]+)*/[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Evidence Contract",
+      "type": "string"
+    },
+    "input_contract": {
+      "pattern": "^[a-z][a-z0-9]*\\.[a-z0-9]+(-[a-z0-9]+)*/[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Input Contract",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "job",
+        "request",
+        "session",
+        "service/subscription"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "output_contract": {
+      "pattern": "^[a-z][a-z0-9]*\\.[a-z0-9]+(-[a-z0-9]+)*/[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Output Contract",
+      "type": "string"
+    },
+    "protocol_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Protocol Version",
+      "type": "string"
+    },
+    "required_profiles": {
+      "items": {
+        "enum": [
+          "CORE",
+          "FRAMEWORK",
+          "CONTEXT_PROVIDER"
+        ],
+        "type": "string"
+      },
+      "title": "Required Profiles",
+      "type": "array"
+    },
+    "schema": {
+      "const": "peg.compatibility-demand/1.0.0",
+      "title": "Schema",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "protocol_version",
+    "required_profiles",
+    "capability_id",
+    "capability_version",
+    "input_contract",
+    "output_contract",
+    "evidence_contract",
+    "mode",
+    "checkpoint_required"
+  ],
+  "title": "CompatibilityDemand",
+  "type": "object"
+}

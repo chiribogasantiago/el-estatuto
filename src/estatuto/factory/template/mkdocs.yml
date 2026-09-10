@@ -1,0 +1,38 @@
+site_name: __NAME__
+site_description: A governed employee framework built under El Estatuto.
+docs_dir: docs
+site_dir: site
+strict: true
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - content.code.copy
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: google
+            show_source: false
+nav:
+  - Home: index.md
+  - Tutorials:
+      - Quickstart: tutorials/quickstart.md
+  - How-to guides:
+      - Connect to the governor: howto/connect-to-the-governor.md
+      - Add a capability: howto/add-a-capability.md
+  - Topics:
+      - Concepts: topics/concepts.md
+  - Reference:
+      - Contracts and protocol surface: reference/contracts.md
+      - Command line: reference/cli.md
+  - Decisions:
+      - Index: decisions/index.md
+      - 0001 Adopt El Estatuto: decisions/0001-adopt-the-estatuto.md
+  - Governance:
+      - Charter: governance/CHARTER.md
+      - Program status: governance/program-status.md
+      - Baseline: governance/baseline/README.md

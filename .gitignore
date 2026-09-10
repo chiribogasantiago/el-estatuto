@@ -1,0 +1,19 @@
+# Local environments and tool caches — recreatable, never a source of truth.
+.venv/
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Build outputs — regenerate before distributing.
+dist/
+build/
+site/
+
+# Disposable work area for gate results. Nothing here is canonical.
+work/
+.DS_Store

@@ -1,0 +1,62 @@
+site_name: El Estatuto
+site_description: The framework standard and the Governed Employee Protocol (PEG/1).
+repo_url: https://github.com/chiribogasantiago/el-estatuto
+docs_dir: docs
+site_dir: site
+strict: true
+exclude_docs: |
+  es/
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - content.code.copy
+    - search.suggest
+  palette:
+    - scheme: default
+      primary: blue grey
+      accent: indigo
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: google
+            show_source: false
+            members_order: source
+nav:
+  - Home: index.md
+  - The standard:
+      - STANDARD: standard/STANDARD.md
+      - Creating an employee: standard/NEW-EMPLOYEE.md
+      - Agent directive: standard/AGENT-DIRECTIVE.md
+  - Protocol:
+      - PEG/1: protocol/PEG-1.md
+  - Tutorials:
+      - Measure a repository: tutorials/measure-a-repository.md
+  - How-to guides:
+      - Record an exception: howto/record-an-exception.md
+      - Version a protocol document: howto/version-a-protocol-document.md
+  - Topics:
+      - Why a standard owns the protocol: topics/why-the-standard-owns-the-protocol.md
+  - Reference:
+      - Controls: reference/controls.md
+      - Command line: reference/cli.md
+      - API: reference/api.md
+  - Decisions:
+      - Index: decisions/index.md
+      - 0001 English live surface: decisions/0001-english-live-surface.md
+      - 0002 The standard owns the protocol: decisions/0002-the-standard-owns-the-protocol.md
+      - 0003 The standard owns the factory: decisions/0003-the-standard-owns-the-employee-factory.md
+      - 0004 Location is not normative: decisions/0004-repository-location-is-not-normative.md
+      - 0005 Self-verifiable digest: decisions/0005-manifest-digest-is-self-verifiable.md
+      - 0006 Refusal and health report: decisions/0006-typed-refusal-and-health-report.md
+      - 0007 Python floor and hatchling: decisions/0007-python-floor-and-hatchling.md
+  - Governance:
+      - Charter: governance/CHARTER.md
+      - Program status: governance/program-status.md
+      - Baseline: governance/baseline/README.md
+      - STANDARD 1.0.0 (frozen): governance/baseline/STANDARD-1.0.0.md

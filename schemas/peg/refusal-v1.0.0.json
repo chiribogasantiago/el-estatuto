@@ -1,0 +1,69 @@
+{
+  "$id": "peg.refusal/1.0.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "``peg.refusal/1.0.0``: a typed refusal before or instead of a result.\n\nReturned when the assignment cannot be executed at all: an invalid document, an\nincompatible demand, a missing authority, an exhausted budget or an unavailable\ndependency. The employee still attests which assignment it refused and what it cost.",
+  "properties": {
+    "assignment_id": {
+      "minLength": 1,
+      "title": "Assignment Id",
+      "type": "string"
+    },
+    "conveys_authority": {
+      "const": false,
+      "default": false,
+      "title": "Conveys Authority",
+      "type": "boolean"
+    },
+    "employee_id": {
+      "pattern": "^emp_[a-z0-9][a-z0-9_-]{7,63}$",
+      "title": "Employee Id",
+      "type": "string"
+    },
+    "employee_version": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "title": "Employee Version",
+      "type": "string"
+    },
+    "error_code": {
+      "pattern": "^[A-Z][A-Z0-9_]{2,63}$",
+      "title": "Error Code",
+      "type": "string"
+    },
+    "observed_cost_micros": {
+      "minimum": 0,
+      "title": "Observed Cost Micros",
+      "type": "integer"
+    },
+    "reasons": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Reasons",
+      "type": "array"
+    },
+    "refused_at": {
+      "format": "date-time",
+      "title": "Refused At",
+      "type": "string"
+    },
+    "schema": {
+      "const": "peg.refusal/1.0.0",
+      "title": "Schema",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "assignment_id",
+    "employee_id",
+    "employee_version",
+    "error_code",
+    "reasons",
+    "observed_cost_micros",
+    "refused_at"
+  ],
+  "title": "Refusal",
+  "type": "object"
+}
